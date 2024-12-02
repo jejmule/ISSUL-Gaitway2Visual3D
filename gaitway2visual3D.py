@@ -22,14 +22,14 @@ def convert_txt_file(file_path,host_path):
     #check if host_path is empty
     if host_path == "" :
         host_path = str(file_path.parent)
+    if host_path.startswith('C:\Mac') :
+            #replace C:\Mac by \\Mac
+            host_path = host_path.replace('C:\Mac','\\\Mac')
     if host_path.endswith('/') :
             pass
     else :
         if host_path.startswith('/') :
             host_path += '/'
-        elif host_path.startswith('C:\Mac') :
-            #replace C:\Mac by \\Mac
-            host_path = host_path.replace('C:\Mac','\\Mac')
         elif not host_path.endswith('\\') :
             host_path += '\\'
     c3d_file = file_path.with_suffix('.c3d')
